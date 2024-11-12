@@ -1,0 +1,57 @@
+﻿@model ShoppinigList.Models.ProductModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+@{
+
+}
+
+<div>
+  
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Product
+        </dt>
+
+        <dd>
+            <img src="@Url.Content(Model.imagesPath)" width="100" height="100" />  &nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            @Html.DisplayFor(model => model.PName)
+
+        </dd>
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Qty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Qty)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+
+        </div>
+    }
+</div>

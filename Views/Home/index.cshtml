@@ -1,0 +1,74 @@
+﻿@model IEnumerable<ShoppinigList.Models.ProductModel>
+
+@{
+    ViewBag.Title = "index";
+}
+
+<h3 class="text-success">
+    @Session["deleteMSG"]
+</h3>
+@TempData["TotalPrice"]
+
+<h4 class=" btn btn-info  ">
+    @Html.ActionLink("Add Product", "Create", "Home", new { @class = "text-light text-decoration-none" })
+</h4>
+
+<table class="table">
+    <tr>
+        <th>
+            Product
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.PPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Qty)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="@Url.Content(item.imagesPath)" width="100" height="100" />  &nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                @Html.DisplayFor(modelItem => item.PName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.PPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Qty)
+            </td>
+
+            <td>
+                @Html.ActionLink("Remove", "Delete","Home", new { id = item.PId }, new { @class = " btn btn-danger text-light text-decoration-none" })
+            </td>
+        </tr>
+    }
+
+
+<tr>
+    <td></td>
+
+
+
+
+    <td>
+        Total Price :  @ViewBag.TotalPrice
+    </td>
+
+    <td>
+        Total Quantity :   @ViewBag.totalQty
+    </td>
+   
+    <td>
+        @Html.ActionLink("Buy Now", "", "", new { @class = " btn btn-success text-light text-decoration-none" })
+    </td>
+
+</tr>
+
+</table>
